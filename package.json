@@ -1,0 +1,12 @@
+{
+  "name": "pntr_app_input_tester",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build:native": "cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build",
+    "build:web": "emcmake cmake -G Ninja -B wbuild -DCMAKE_BUILD_TYPE=Release && cmake --build wbuild",
+    "start": "npx -y live-server --mount=/host:./wbuild --mount=/assets:./assets webroot",
+    "prestart": "npm run build:web"
+  }
+}

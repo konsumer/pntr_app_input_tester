@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>pntr_app_input_tester</title>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script type="module">
+      import loadHost from './host/pntr_app_input_tester.mjs'
+
+
+      // load files from web
+      const files = [
+        'a.png',
+        'b.png',
+        'bg.png',
+        'down.png',
+        'l1.png',
+        'left.png',
+        'r1.png',
+        'right.png',
+        'select.png',
+        'start.png',
+        'up.png',
+        'x.png',
+        'y.png'
+      ]
+      
+      const blobs = await Promise.all(files.map(async name => {
+        return {
+          name,
+          blob: new Uint8Array(await fetch(`assets/${name}`).then(r => r.arrayBuffer()))
+        }
+      }))
+
+      const pntr_app_input_tester = await loadHost({
+        canvas: document.getElementById('canvas'),
+        preRun(Module) {
+          Module.FS.mkdir('assets')
+          for (const {name, blob} of blobs) {
+            Module.FS_createDataFile('assets',name,blob,true,false,false)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
