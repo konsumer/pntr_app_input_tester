@@ -66,7 +66,6 @@ void cart_buttonDown(pntr_app_gamepad_button button, unsigned int player) {
 
 // called on every frame
 void cart_update(pntr_image *screen) {
-  pntr_clear_background(screen, PNTR_BLACK);
   pntr_draw_image(screen, bg, 0, 0);
   pntr_draw_image_scaled(screen, images[0], 0, 94, 2, 2, 0, 0, PNTR_FILTER_NEARESTNEIGHBOR);
 
