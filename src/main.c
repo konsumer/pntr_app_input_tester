@@ -67,11 +67,11 @@ void cart_buttonDown(pntr_app_gamepad_button button, unsigned int player) {
 // called on every frame
 void cart_update(pntr_image *screen) {
   pntr_draw_image(screen, bg, 0, 0);
-  pntr_draw_image_scaled(screen, images[0], 0, 94, 2, 2, 0, 0, PNTR_FILTER_NEARESTNEIGHBOR);
+  pntr_draw_image(screen, images[0], 0, 94);
 
   for (int i = 1; i < 16; i++) {
     if (buttons[i]) {
-      pntr_draw_image_scaled(screen, images[i], 0, 0, 2, 2, 0, 0, PNTR_FILTER_NEARESTNEIGHBOR);
+      pntr_draw_image(screen, images[i], 0, 0);
     }
   }
 }
