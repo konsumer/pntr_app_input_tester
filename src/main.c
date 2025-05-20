@@ -55,13 +55,13 @@ void cart_load() {
 }
 
 // mapped controller callback
-void cart_buttonUp(pntr_app_gamepad_button button, unsigned int player) {
-  buttons[button] = true;
+void cart_buttonUp(unsigned int button, unsigned int player) {
+  buttons[(int)button] = false;
 }
 
 // mapped controller callback
 void cart_buttonDown(pntr_app_gamepad_button button, unsigned int player) {
-  buttons[button] = false;
+  buttons[(int)button] = true;
 }
 
 // called on every frame
